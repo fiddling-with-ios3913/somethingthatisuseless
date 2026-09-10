@@ -69,17 +69,17 @@
 <body>
 
     <header>
-        <h1>Welcome! This is a place for deep studying.</h1>
+        <h1> Welcome! This is a place for deep studying.</h1>
     </header>
 
     <div class="container">
-        <h2>Study hub</h2>
+        <h2>Study Hub</h2>
         <p>Click on something to study.</p>
         
         <div class="game-grid">
-            <!-- Clicking this card triggers the Javascript to open the games -->
-            <div class="game-card" onclick="launchGame('https://ccported.github.io/')">
-                <h3>Relaxing music for studying</h3>
+            <!-- This card now calls the checkPassword function instead of loading immediately -->
+            <div class="game-card" onclick="checkPassword('https://ccported.github.io')">
+                <h3>Relaxing music fro studying</h3>
                 <p>Click to listen.</p>
             </div>
         </div>
@@ -89,12 +89,23 @@
     </div>
 
     <script>
-        function launchGame(url) {
-            var frame = document.getElementById('game-workspace');
-            frame.src = url;
-            frame.style.display = 'block';
-            // Smoothly scrolls your screen down to the game window
-            frame.scrollIntoView({ behavior: 'smooth' });
+        function checkPassword(url) {
+            // Change '1234' inside the quotes to whatever password you want!
+            var correctPassword = "3913"; 
+            
+            // This opens the pop-up box asking for the password
+            var userGuess = prompt("Enter your deep study Password to continue:");
+            
+            if (userGuess === correctPassword) {
+                // If the password is correct, load the game
+                var frame = document.getElementById('game-workspace');
+                frame.src = url;
+                frame.style.display = 'block';
+                frame.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                // If the password is wrong, show an alert and do nothing
+                alert("Incorrect password. Access denied.");
+            }
         }
     </script>
 
